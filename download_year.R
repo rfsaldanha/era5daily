@@ -4,7 +4,7 @@ library(tictoc)
 
 year <- 2022
 
-keyring_unlock(password= Sys.getenv("era5_keyring"))
+keyring_unlock("ecmwfr", password= Sys.getenv("era5_keyring"))
 
 API_User <- as.numeric(Sys.getenv("era5_API_User"))
 API_Key <- Sys.getenv("era5_API_Key")
