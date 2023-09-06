@@ -1,8 +1,10 @@
 # devtools::install_github("https://github.com/ErikKusch/KrigR")
 library(KrigR)
 library(tictoc)
+library(lubridate)
 
 year <- 2022
+months <- 1:12
 
 keyring_unlock("ecmwfr", password= Sys.getenv("era5_keyring"))
 
@@ -23,24 +25,32 @@ tasks <- data.frame(
 
 # Download function
 for(i in 1:nrow(tasks)){
-  message(paste0(tasks[i,1], " - ", tasks[i,2]))
   
-  tic()
-  QS_Raw <- download_ERA(
-    Variable = tasks[i,1],
-    PrecipFix = tasks[i,3],
-    DataSet = "era5-land",
-    DateStart = paste0(year,"-01-01"),
-    DateStop = paste0(year,"-12-31"),
-    TResolution = "day",
-    TStep = 1,
-    FUN = tasks[i,2],
-    Extent = Extent_ext,
-    Dir = Dir.Data,
-    Cores = 1,
-    API_User = API_User,
-    API_Key = API_Key,
-    TryDown = 100
-  )
-  toc()
+  for(m in months){
+    
+    date_start <- as.character(floor_date(as.Date(paste0(year,"-",m,"-01")), "month"))
+    date_end <- as.character(ceiling_date(as.Date(paste0(year,"-",m,"-01")), "month")-1)
+    
+    message(paste0(tasks[i,1], " - ", tasks[i,2], " - month ", m))
+    
+    tic()
+    QS_Raw <- download_ERA(
+      Variable = tasks[i,1],
+      PrecipFix = tasks[i,3],
+      DataSet = "era5-land",
+      DateStart = date_start,
+      DateStop = date_end,
+      TResolution = "day",
+      TStep = 1,
+      FUN = tasks[i,2],
+      Extent = Extent_ext,
+      Dir = Dir.Data,
+      Cores = 1,
+      API_User = API_User,
+      API_Key = API_Key,
+      TryDown = 100
+    )
+    toc()
+    
+  }
 }
