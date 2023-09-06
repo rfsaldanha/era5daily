@@ -35,7 +35,7 @@ for(i in 1:nrow(tasks)){
     FUN = tasks[i,2],
     Extent = Extent_ext,
     Dir = Dir.Data,
-    Cores = 8,
+    Cores = 1,
     API_User = API_User,
     API_Key = API_Key,
     TryDown = 100
