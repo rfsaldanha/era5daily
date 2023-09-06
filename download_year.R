@@ -1,6 +1,5 @@
 # devtools::install_github("https://github.com/ErikKusch/KrigR")
 library(KrigR)
-library(beepr)
 library(tictoc)
 
 year <- 2022
@@ -8,7 +7,7 @@ year <- 2022
 API_User <- as.numeric(Sys.getenv("era5_API_User"))
 API_Key <- Sys.getenv("era5_API_Key")
 
-Dir.Data <- "era5_data"
+Dir.Data <- "/mnt/volume_lon1_01/era5_data"
 
 # Latin America
 Extent_ext <- extent(c(-118.47,-34.1,-56.65, 33.28))
@@ -42,6 +41,4 @@ for(i in 1:nrow(tasks)){
     TryDown = 100
   )
   toc()
-  
-  beepr::beep(sound = 2)
 }
