@@ -3,7 +3,7 @@ library(KrigR)
 library(tictoc)
 library(lubridate)
 
-year <- 2022
+year <- 2021
 months <- 1:12
 
 keyring_unlock("ecmwfr", password= Sys.getenv("era5_keyring"))
@@ -24,7 +24,7 @@ tasks <- data.frame(
 )
 
 # Download function
-for(i in 6:nrow(tasks)){
+for(i in 1:nrow(tasks)){
   
   for(m in months){
     
