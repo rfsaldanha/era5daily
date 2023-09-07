@@ -48,7 +48,7 @@ for(i in 6:nrow(tasks)){
       Extent = Extent_ext,
       Dir = Dir.Data,
       FileName = file_name,
-      Cores = 1,
+      Cores = 4,
       API_User = API_User,
       API_Key = API_Key,
       TryDown = 100
