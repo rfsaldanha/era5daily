@@ -31,7 +31,9 @@ for(i in 1:nrow(tasks)){
     date_start <- as.character(floor_date(as.Date(paste0(year,"-",m,"-01")), "month"))
     date_end <- as.character(ceiling_date(as.Date(paste0(year,"-",m,"-01")), "month")-1)
     
-    message(paste0(tasks[i,1], " - ", tasks[i,2], " - month ", m))
+    file_name <- paste0(tasks[i,1],"_",date_start,"_",date_end,"_day_",tasks[i,2])
+    
+    message(file_name)
     
     tic()
     QS_Raw <- download_ERA(
@@ -45,11 +47,13 @@ for(i in 1:nrow(tasks)){
       FUN = tasks[i,2],
       Extent = Extent_ext,
       Dir = Dir.Data,
+      FileName = file_name,
       Cores = 1,
       API_User = API_User,
       API_Key = API_Key,
       TryDown = 100
     )
+    rm(QS_Raw)
     toc()
     
   }
