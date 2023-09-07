@@ -24,7 +24,7 @@ tasks <- data.frame(
 )
 
 # Download function
-for(i in 1:nrow(tasks)){
+for(i in 6:nrow(tasks)){
   
   for(m in months){
     
