@@ -18,9 +18,9 @@ Extent_ext <- extent(c(30.080566,40.979004,-27.469287,-10.314919))
 
 # Tasks
 tasks <- data.frame(
-  var = c("10m_u_component_of_wind", "10m_v_component_of_wind", "2m_temperature", "2m_temperature", "2m_temperature", "total_precipitation"),
-  stat = c("mean", "mean", "mean", "max", "min", "sum"),
-  fix = c(FALSE, FALSE, FALSE, FALSE, FALSE, TRUE)
+  var = c("2m_temperature", "2m_temperature", "2m_temperature", "total_precipitation"),
+  stat = c("mean", "max", "min", "sum"),
+  fix = c(FALSE, FALSE, FALSE, TRUE)
 )
 
 # Download function
@@ -57,9 +57,9 @@ for(i in 1:nrow(tasks)){
       )
       rm(QS_Raw)
       toc()
-      
     }
-    
+
   }
   
 }
+.
