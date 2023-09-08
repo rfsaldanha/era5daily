@@ -3,7 +3,7 @@ library(KrigR)
 library(tictoc)
 library(lubridate)
 
-year <- 2021
+years <- 2020:2000
 months <- 1:12
 
 keyring_unlock("ecmwfr", password= Sys.getenv("era5_keyring"))
@@ -26,35 +26,40 @@ tasks <- data.frame(
 # Download function
 for(i in 1:nrow(tasks)){
   
-  for(m in months){
+  for(y in years){
     
-    date_start <- as.character(floor_date(as.Date(paste0(year,"-",m,"-01")), "month"))
-    date_end <- as.character(ceiling_date(as.Date(paste0(year,"-",m,"-01")), "month")-1)
-    
-    file_name <- paste0(tasks[i,1],"_",date_start,"_",date_end,"_day_",tasks[i,2])
-    
-    message(file_name)
-    
-    tic()
-    QS_Raw <- download_ERA(
-      Variable = tasks[i,1],
-      PrecipFix = tasks[i,3],
-      DataSet = "era5-land",
-      DateStart = date_start,
-      DateStop = date_end,
-      TResolution = "day",
-      TStep = 1,
-      FUN = tasks[i,2],
-      Extent = Extent_ext,
-      Dir = Dir.Data,
-      FileName = file_name,
-      Cores = 1,
-      API_User = API_User,
-      API_Key = API_Key,
-      TryDown = 100
-    )
-    rm(QS_Raw)
-    toc()
+    for(m in months){
+      
+      date_start <- as.character(floor_date(as.Date(paste0(y,"-",m,"-01")), "month"))
+      date_end <- as.character(ceiling_date(as.Date(paste0(y,"-",m,"-01")), "month")-1)
+      
+      file_name <- paste0(tasks[i,1],"_",date_start,"_",date_end,"_day_",tasks[i,2])
+      
+      message(file_name)
+      
+      tic()
+      QS_Raw <- download_ERA(
+        Variable = tasks[i,1],
+        PrecipFix = tasks[i,3],
+        DataSet = "era5-land",
+        DateStart = date_start,
+        DateStop = date_end,
+        TResolution = "day",
+        TStep = 1,
+        FUN = tasks[i,2],
+        Extent = Extent_ext,
+        Dir = Dir.Data,
+        FileName = file_name,
+        Cores = 1,
+        API_User = API_User,
+        API_Key = API_Key,
+        TryDown = 100
+      )
+      rm(QS_Raw)
+      toc()
+      
+    }
     
   }
+  
 }
