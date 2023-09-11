@@ -43,6 +43,11 @@ for(i in 1:nrow(tasks)){
       
       message(file_name)
       
+      if(file.exists(paste0(Dir.Data, "/", file_name, ".nc"))){
+        message("File already exists. Going for next.")
+        next
+      }
+      
       tic()
       QS_Raw <- download_ERA(
         Variable = tasks[i,1],
