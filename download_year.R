@@ -26,7 +26,7 @@ Extent_ext <- extent(c(-118.47,-34.1,-56.65, 33.28))
 tasks <- data.frame(
   var = c("2m_temperature", "2m_temperature", "total_precipitation"),
   stat = c("max", "min", "sum"),
-  fix = c(FALSE, FALSE, FALSE, TRUE)
+  fix = c(FALSE, FALSE, TRUE)
 )
 
 # Download function
