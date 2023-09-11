@@ -24,8 +24,8 @@ Extent_ext <- extent(c(-118.47,-34.1,-56.65, 33.28))
 # )
 
 tasks <- data.frame(
-  var = c("2m_temperature", "2m_temperature", "2m_temperature", "total_precipitation"),
-  stat = c("mean", "max", "min", "sum"),
+  var = c("2m_temperature", "2m_temperature", "total_precipitation"),
+  stat = c("max", "min", "sum"),
   fix = c(FALSE, FALSE, FALSE, TRUE)
 )
 
@@ -62,6 +62,7 @@ for(i in 1:nrow(tasks)){
         TryDown = 100
       )
       rm(QS_Raw)
+      unlink(paste0(normalizePath(tempdir()), "/", dir(tempdir())), recursive = TRUE)
       toc()
       
     }
