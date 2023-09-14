@@ -3,7 +3,7 @@ library(KrigR)
 library(tictoc)
 library(lubridate)
 
-years <- 2020:2000
+years <- 1999:1950
 months <- 1:12
 
 keyring_unlock("ecmwfr", password= Sys.getenv("era5_keyring"))
@@ -18,9 +18,9 @@ Extent_ext <- extent(c(-118.47,-34.1,-56.65, 33.28))
 
 # Tasks
 tasks <- data.frame(
-  var = c("10m_u_component_of_wind", "10m_v_component_of_wind", "2m_temperature", "2m_temperature", "2m_temperature"),
-  stat = c("mean", "mean", "mean", "max", "min"),
-  fix = c(FALSE, FALSE, FALSE, FALSE, FALSE)
+  var = c("10m_u_component_of_wind", "10m_v_component_of_wind", "2m_temperature", "2m_temperature", "2m_temperature", "total_precipitation"),
+  stat = c("mean", "mean", "mean", "max", "min", "sum"),
+  fix = c(FALSE, FALSE, FALSE, FALSE, FALSE, TRUE)
 )
 
 # Download function
