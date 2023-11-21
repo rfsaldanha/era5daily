@@ -3,31 +3,32 @@ library(KrigR)
 library(tictoc)
 library(lubridate)
 
-years <- 2022:1950
-months <- 1:12
+years <- 2023
+months <- 1:10
 
 keyring_unlock("ecmwfr", password= Sys.getenv("era5_keyring"))
 
 API_User <- as.numeric(Sys.getenv("era5_API_User"))
 API_Key <- Sys.getenv("era5_API_Key")
 
-Dir.Data <- "/mnt/volume_lon1_01/era5_data"
+Dir.Data <- "/media/raphael/lacie/era5land_daily_latin_america/data_2023/"
 
 # Latin America
 Extent_ext <- extent(c(-118.47,-34.1,-56.65, 33.28))
 
 # Tasks
 # tasks <- data.frame(
-#   var = c("10m_u_component_of_wind", "10m_v_component_of_wind", "2m_temperature", "2m_temperature", "2m_temperature", "total_precipitation"),
-#   stat = c("mean", "mean", "mean", "max", "min", "sum"),
-#   fix = c(FALSE, FALSE, FALSE, FALSE, FALSE, TRUE)
+#   var = c("10m_u_component_of_wind", "10m_v_component_of_wind", "2m_dewpoint_temperature", "surface_pressure", "2m_temperature", "2m_temperature", "2m_temperature", "total_precipitation"),
+#   stat = c("mean", "mean", "mean", "mean", "mean", "max", "min", "sum"),
+#   fix = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE)
 # )
 
 tasks <- data.frame(
-  var = c("2m_dewpoint_temperature", "surface_pressure"),
-  stat = c("mean", "mean"),
-  fix = c(FALSE, FALSE)
+  var = c("surface_pressure"),
+  stat = c("mean"),
+  fix = c(FALSE)
 )
+
 
 # Download function
 for(i in 1:nrow(tasks)){
