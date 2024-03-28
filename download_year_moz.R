@@ -3,7 +3,7 @@ library(KrigR)
 library(tictoc)
 library(lubridate)
 
-years <- 2022:2000
+years <- 2000:2022
 months <- 1:12
 
 keyring_unlock("ecmwfr", password= Sys.getenv("era5_keyring"))
@@ -11,7 +11,7 @@ keyring_unlock("ecmwfr", password= Sys.getenv("era5_keyring"))
 API_User <- as.numeric(Sys.getenv("era5_API_User"))
 API_Key <- Sys.getenv("era5_API_Key")
 
-Dir.Data <- "era5_data_moz"
+Dir.Data <- "/media/raphael/lacie/era5land_daily_mozambique/"
 
 # Mozambique
 Extent_ext <- extent(c(30.080566,40.979004,-27.469287,-10.314919))
