@@ -3,7 +3,7 @@ library(KrigR)
 library(tictoc)
 library(lubridate)
 
-years <- 1950:2023
+years <- 2023:1950
 months <- 1:12
 
 keyring_unlock("ecmwfr", password= Sys.getenv("era5_keyring"))
