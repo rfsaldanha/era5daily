@@ -23,12 +23,14 @@ tasks <- data.frame(
   fix = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE)
 )
 
+tasks <- tasks[5:8,]
+
 # Download function
-for(i in 1:nrow(tasks)){
+for(y in years){
   
-  for(y in years){
+  for(m in months){
     
-    for(m in months){
+    for(i in 1:nrow(tasks)){
       
       date_start <- as.character(floor_date(as.Date(paste0(y,"-",m,"-01")), "month"))
       date_end <- as.character(ceiling_date(as.Date(paste0(y,"-",m,"-01")), "month")-1)
