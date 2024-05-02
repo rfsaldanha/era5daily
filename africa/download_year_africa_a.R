@@ -23,7 +23,7 @@ tasks <- data.frame(
   fix = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE)
 )
 
-tasks <- tasks[1:4,]
+tasks <- tasks[1:2,]
 
 # Download function
 for(y in years){
@@ -63,6 +63,7 @@ for(y in years){
         TryDown = 100
       )
       rm(QS_Raw)
+      gc()
       unlink(paste0(normalizePath(tempdir()), "/", dir(tempdir())), recursive = TRUE)
       toc()
       

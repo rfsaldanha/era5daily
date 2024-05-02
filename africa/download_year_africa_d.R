@@ -23,7 +23,7 @@ tasks <- data.frame(
   fix = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE)
 )
 
-tasks <- tasks[3:4,]
+tasks <- tasks[7:8,]
 
 # Download function
 for(y in years){
