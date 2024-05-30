@@ -3,15 +3,15 @@ library(KrigR)
 library(tictoc)
 library(lubridate)
 
-years <- 2020
-months <- 1:12
+years <- 2024
+months <- 1:5
 
 keyring_unlock("ecmwfr", password= Sys.getenv("era5_keyring"))
 
 API_User <- as.numeric(Sys.getenv("era5_API_User"))
 API_Key <- Sys.getenv("era5_API_Key")
 
-Dir.Data <- "/mnt/volume_lon1_01/era5_data"
+Dir.Data <- "/media/raphael/lacie/era5land_daily_latin_america/data_2024/"
 
 # Latin America
 Extent_ext <- extent(c(-118.47,-34.1,-56.65, 33.28))
