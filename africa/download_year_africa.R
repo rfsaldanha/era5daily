@@ -18,7 +18,7 @@ API_Key <- Sys.getenv("era5_API_Key")
 # Destination folder
 Dir.Data <- "africa/data"
 
-# Latin America
+# Africa bbox
 Extent_ext <- terra::ext(c(-27.07, 63.24, -36.67, 38.99))
 
 # Tasks
