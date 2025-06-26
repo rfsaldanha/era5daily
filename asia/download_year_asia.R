@@ -7,7 +7,7 @@ library(lubridate)
 library(cli)
 
 # Settings
-years <- 1950:2024
+years <- 1951:2024
 months <- 1:12
 
 # Copernicus Data Store API access
