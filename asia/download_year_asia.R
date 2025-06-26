@@ -19,7 +19,7 @@ API_Key <- Sys.getenv("era5_API_Key")
 Dir.Data <- "/media/raphaelsaldanha/lacie/era5land_daily_asia/"
 
 # Asia bbox
-Extent_ext <- terra::ext(c(60.5, 183.5, -48.7, 54.9))
+Extent_ext <- terra::ext(c(60.5, 180.0, -48.7, 54.9))
 
 # Tasks
 tasks <- data.frame(
